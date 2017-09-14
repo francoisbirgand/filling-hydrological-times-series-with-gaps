@@ -1,5 +1,3 @@
 # filling hydrologic time series that have missing data
 
-When analyzing hydrologic time series, more often than not, an instrument missed over a period of time recording of some of the data
-This is a trial repository to host some statistical code for hydrological purposes
-This is supposed to be a basis for collaboration Between Birgand and Howden
+When acquiring hydrologic and water quality time series, it is not rare to have gaps in the record because of an instrument failure, human error, and, for water quality rather infrequent data.  In many cases, the analysis of the data requires to have gap free flow and concentration data, i.e., that there be data at absolutely regular intervals and that there be a flow or concentration data for each interval.  It might also be desirable at times to create 10-min data from 12-min original measurements data stream.  This program coded in R allows to do just this.  
