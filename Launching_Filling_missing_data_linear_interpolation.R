@@ -42,7 +42,7 @@
 #### differ from file to file
 
 path<-("~/gitRepositories/filling-hydrological-times-series-with-gaps/")
-filename<-"Elorn_NO3_91-92.csv"
+filename<-"Example_input.csv"
 data<-read.csv(file=paste(path,filename,sep=""),sep=",",header = TRUE)
 
 #### the only important name here is 'datetime'.  Make sure it corresponds to the correct column
@@ -76,7 +76,7 @@ data<-as.data.frame(data)
 
 time_interval<-c(24*3600,3600); bound_dates=c(FALSE,"","")
 # time_interval<-c(3600,120); bound_dates=c(TRUE,"01/09/1990 02:20:00","01/09/2003 00:30:00")
-filename<-paste(path,"trial.csv",sep="")
+filename<-paste(path,"Example_output.csv",sep="")
 writefile=c(TRUE,filename)
 
 source(paste(path,"Function_Filling_missing_data_linear_interpolation.R",sep=""))
