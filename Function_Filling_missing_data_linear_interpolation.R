@@ -26,7 +26,7 @@ lin_interp_fill<-function(data,time_interval=c(origin_time_res,final_time_res),
                           bound_dates=c(FALSE,ini_date,final_date),
                           writefile=c(FALSE,filename)){
 
-Sys.setenv(TZ="GMT")
+Sys.setenv(TZ="GMT",origin = "1970-01-01")
 library(tidyverse)
 library(dplyr)
 library(R.utils)

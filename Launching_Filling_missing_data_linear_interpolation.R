@@ -43,7 +43,7 @@
 
 path<-("~/gitRepositories/filling-hydrological-times-series-with-gaps/")
 filename<-"Elorn_NO3_91-92.csv"
-data<-read.csv(file=paste(path,filename,sep=""),sep=",")
+data<-read.csv(file=paste(path,filename,sep=""),sep=",",header = TRUE)
 
 #### the only important name here is 'datetime'.  Make sure it corresponds to the correct column
 names(data)<-c("datetime","Q","C")
