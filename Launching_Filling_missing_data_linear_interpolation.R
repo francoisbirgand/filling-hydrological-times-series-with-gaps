@@ -7,7 +7,7 @@
 #####                 bound_dates=c(FALSE,ini_date,final_date),
 #####                 writefile=c(FALSE,filename))
 ####
-#### data: dataframe with first column with dates (dd/mm/yyyy hh:mm:ss); as many additional columns
+#### data: dataframe with first column with dates (yyyy-mm-dd hh:mm:ss); as many additional columns
 ####        as desired.
 #### time_interval: time_interval=c(origin_time_res,final_time_res) 
 ####                for the original and the new time intervals in seconds for the linearized data
@@ -17,7 +17,7 @@
 ####              TRUE/FALSE? Need the linear interpolation be started earlier, and end later
 ####              than the first and last dates in the data?  If TRUE, then provide 
 ####              the initial (ini_date) and final (final_date) dates to be used
-####              ("dd/mm/yyyy hh:mm:ss")
+####              ("yyyy-mm-dd hh:mm:ss")
 #### writefile=c(FALSE,filename); TRUE/FALSE Need the results be written into a file? If true
 ####              provide the full name of the file with extension. Date output format is 
 ####              "yyyy-mm-dd hh:mm:ss"
@@ -48,16 +48,15 @@ data<-read.csv(file=paste(path,filename,sep=""),sep=",",header = TRUE)
 #### the only important name here is 'datetime'.  Make sure it corresponds to the correct column
 names(data)<-c("datetime","Q","C")
 
-#### Sometimes the original file the time '00:00:00' does not appear, so this preprocessing is necessary
-#### to have it appear
-#Date<-substr(data[,1], 1, 10) 
-#T<-substr(data[,1], 12, 19)   
-#T[T==""]="00:00:00"
-#data$datetime<-paste(Date,T,sep=" ")
+# with the "Elorn_NO3_91-92.csv", 
+# 1.The dates are in the format "dd/mm/yyyy", so they must first be transformed into yyyy-mm-dd 
+# 2.it is daily data only. so there are no "00:00:00" at all, but 
+#    must added
 
-# with the "Elorn_NO3_91-92.csv", it is daily data only. so there are no "00:00:00" at all, but 
-# must added
-
+Day<-substr(data$datetime, 1, 2)
+Mon<-substr(data$datetime, 4, 5)
+Year<-substr(data$datetime, 7, 10)
+data$datetime<-paste(Year,"-",Mon,"-",Day,sep="")
 data$datetime<-paste(as.character(data$datetime),"00:00:00",sep=" ")
 
 
@@ -75,7 +74,7 @@ data<-as.data.frame(data)
 
 
 time_interval<-c(24*3600,3600); bound_dates=c(FALSE,"","")
-# time_interval<-c(3600,120); bound_dates=c(TRUE,"01/09/1990 02:20:00","01/09/2003 00:30:00")
+# time_interval<-c(3600,120); bound_dates=c(TRUE,"1990-09-01 02:20:00","2003-09-01 00:30:00")
 filename<-paste(path,"Example_output.csv",sep="")
 writefile=c(TRUE,filename)
 

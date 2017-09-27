@@ -5,7 +5,7 @@
 ####  
 #### written by François Birgand, September 2017
 ####
-#### data: dataframe with first column with dates (dd/mm/yyyy hh:mm:ss); as many additional columns
+#### data: dataframe with first column with dates (yyyy-mm-dd hh:mm:ss); as many additional columns
 ####        as desired.
 #### time_interval: time_interval=c(origin_time_res,final_time_res) 
 ####                for the original and the new time intervals in seconds for the linearized data
@@ -32,8 +32,8 @@ library(dplyr)
 library(R.utils)
 
 N<-nrow(data)
-data[,1]<-as.POSIXct(strptime(data[,1],format = "%d/%m/%Y %H:%M:%S"))
-daterange<-as.POSIXct(strptime(bound_dates[2:3],format = "%d/%m/%Y %H:%M:%S"))
+data[,1]<-as.POSIXct(strptime(data[,1],format = "%Y-%m-%d %H:%M:%S"))
+daterange<-as.POSIXct(strptime(bound_dates[2:3],format = "%Y-%m-%d %H:%M:%S"))
 colnames(data)[1]<-"datetime"
 
 
