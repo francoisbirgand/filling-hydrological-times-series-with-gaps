@@ -15,7 +15,7 @@
 ####              TRUE/FALSE? Need the linear interpolation be started earlier, and end later
 ####              than the first and last dates in the data?  If TRUE, then provide 
 ####              the initial (ini_date) and final (final_date) dates to be used
-####              ("dd/mm/yyyy hh:mm:ss")
+####              ("yyyy-mm-dd hh:mm:ss")
 #### writefile=c(FALSE,filename); TRUE/FALSE Need the results be written into a file? If true
 ####              provide the full name of the file with extension. Date output format is 
 ####              "yyyy-mm-dd hh:mm:ss"
